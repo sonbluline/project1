@@ -1,4 +1,6 @@
+import 'package:explore_clone/widgets/destination_heading.dart';
 import 'package:explore_clone/widgets/featured_heading.dart';
+import 'package:explore_clone/widgets/featured_tiles.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import '../widgets/web_scrollbar.dart';
@@ -81,10 +83,13 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       FloatingQuickAccessBar(screenSize: screenSize),
                       FeaturedHeading(screenSize: screenSize),
+                      FeaturedTiles(screenSize: screenSize)
                     ],
                   )
                 ],
-              )
+              ),
+              DestinationHeading(screenSize: screenSize),
+              // DestinationCarousel()
             ],
           ),
         ),
