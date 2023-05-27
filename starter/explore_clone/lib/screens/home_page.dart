@@ -1,10 +1,13 @@
+import 'package:explore_clone/widgets/bottom_bar.dart';
 import 'package:explore_clone/widgets/destination_heading.dart';
 import 'package:explore_clone/widgets/featured_heading.dart';
 import 'package:explore_clone/widgets/featured_tiles.dart';
+import 'package:explore_clone/widgets/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import '../widgets/web_scrollbar.dart';
 import '../widgets/floating_quick_access_bar.dart';
+import '../widgets/carousel.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -40,27 +43,34 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-          backgroundColor:
-              Theme.of(context).bottomAppBarTheme.color!.withOpacity(_opacity),
-          elevation: 0,
-          centerTitle: true,
-          actions: [
-            IconButton(
-                onPressed: () {
-                  EasyDynamicTheme.of(context).changeTheme();
-                },
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                icon: const Icon(Icons.brightness_6))
-          ],
-          title: Text("EXPLORE",
-              style: TextStyle(
-                  color: Colors.blueGrey[100],
-                  fontSize: 20,
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 3))),
+      appBar: ResponsiveWidget.isSmallScreen(context)
+          ? AppBar(
+              backgroundColor: Theme.of(context)
+                  .bottomAppBarTheme
+                  .color!
+                  .withOpacity(_opacity),
+              elevation: 0,
+              centerTitle: true,
+              actions: [
+                IconButton(
+                    onPressed: () {
+                      EasyDynamicTheme.of(context).changeTheme();
+                    },
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    icon: const Icon(Icons.brightness_6))
+              ],
+              title: Text("EXPLORE",
+                  style: TextStyle(
+                      color: Colors.blueGrey[100],
+                      fontSize: 20,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w400,
+                      letterSpacing: 3)))
+          : PreferredSize(
+              preferredSize: Size(screenSize.width, 1000),
+              child: Container(),
+            ),
       body: WebScrollbar(
         color: Colors.blueGrey,
         backgroundColor: Colors.blueGrey.withOpacity(0.3),
@@ -89,7 +99,11 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               DestinationHeading(screenSize: screenSize),
-              // DestinationCarousel()
+              const DestinationCarousel(),
+              SizedBox(
+                height: screenSize.height / 10,
+              ),
+              const BottomBar()
             ],
           ),
         ),
