@@ -3,6 +3,7 @@ import 'package:explore_clone/widgets/destination_heading.dart';
 import 'package:explore_clone/widgets/featured_heading.dart';
 import 'package:explore_clone/widgets/featured_tiles.dart';
 import 'package:explore_clone/widgets/responsive.dart';
+import 'package:explore_clone/widgets/top_bar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import '../widgets/web_scrollbar.dart';
@@ -69,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                       letterSpacing: 3)))
           : PreferredSize(
               preferredSize: Size(screenSize.width, 1000),
-              child: Container(),
+              child: TopBarContents(opacity: _opacity),
             ),
       body: WebScrollbar(
         color: Colors.blueGrey,
