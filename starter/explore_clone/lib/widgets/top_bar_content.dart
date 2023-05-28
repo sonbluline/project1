@@ -149,7 +149,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                                 width: 5,
                               ),
                               Text(
-                                name ?? userEmail!,
+                                name ?? userEmail ?? '',
                                 style: TextStyle(
                                     color: isHovering[menu.length]
                                         ? Colors.white
