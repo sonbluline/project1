@@ -124,7 +124,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                                 builder: (context) => const AuthDialog());
                           }
                         : null,
-                    child: userEmail != null
+                    child: userEmail == null
                         ? Text(
                             'Sign In',
                             style: TextStyle(
@@ -177,7 +177,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                                                     MaterialPageRoute(
                                                         fullscreenDialog: true,
                                                         builder: (context) =>
-                                                            HomePage()));
+                                                            const HomePage()));
                                           }).catchError((error) {
                                             print('Sign Out Error: $error');
                                           });
@@ -186,7 +186,8 @@ class _TopBarContentsState extends State<TopBarContents> {
                                           });
                                         },
                                   child: Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 8),
+                                    padding:
+                                        const EdgeInsets.symmetric(vertical: 8),
                                     child: isProcessing
                                         ? const CircularProgressIndicator()
                                         : const Text(

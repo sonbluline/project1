@@ -5,7 +5,7 @@ import 'config/theme_data.dart';
 import 'utils/authentication.dart';
 
 void main() {
-  runApp(EasyDynamicThemeWidget(child: MyApp()));
+  runApp(EasyDynamicThemeWidget(child: const MyApp()));
 }
 
 class MyApp extends StatefulWidget {
